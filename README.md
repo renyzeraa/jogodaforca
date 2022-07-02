@@ -1,5 +1,8 @@
 # JOGO DA FORCA
 
+Trabalho proposto na disciplina de Algoritmos, curso Ciências da Computação.
+IFC - Instituto Federal Catarinense
+
 ## Sobre
 
 - [ ] Pseudo-linguagem *Portugol* 
