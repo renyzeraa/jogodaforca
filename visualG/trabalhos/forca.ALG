@@ -1,18 +1,19 @@
 algoritmo "forca"
 
 // Função : Jogo da forca
-// Autor : Renan Leandro da Silva
-// Data : 12/07/2022
 
+// Autor : Renan Leandro da Silva
+
+// Data : 12/07/2022
 
 Var
 
 // Seção de Declarações das variáveis
-//Modo de Jogo 2
+
    palavra, letratent: caractere
    letras, letrasesc: vetor[1..20] de caractere
    tamletratent, selecj, esclhv, modojogo, cont1, cont2, cont3, cont4, tampalavra, erros, tentativas, acerto, acertos: inteiro
-   //Modo de Jogo 1
+
    palavras, letras2, letrasesc2: vetor[1..20] de caracter
    tamletratent2, nmraleat, cont5, cont6, cont7, cont8, tampalavra2, erros2, tentativas2, acerto2, acertos2: inteiro
    palavra2, letratent2: caracter
@@ -32,15 +33,9 @@ Var
 
 Inicio
 
-// Seção de Comandos, procedimento, funções, operadores, etc...
-
    esclhv <- 0
    tampalavra <- 0
    modojogo <- 0
-
-
-    //Modo jogo 1
-    
    cont1 <- 1
    erros <- 0
    cont2 <- 1
@@ -48,8 +43,6 @@ Inicio
    cont4 <- 1
    acerto <- 0
    nmraleat <- 0
-
-    //Modo jogo 2
    cont5 <- 1
    cont6 <- 1
    cont7 <- 1
@@ -133,12 +126,12 @@ Inicio
          leia (selecj)
       fimse
    fimEnquanto
-   
+
    // fechar o jogo
       se selecj = 2 entao
          fimalgoritmo
       fimSe
-      
+
    //1 - Jogar
    se selecj = 1 entao
       modojogo <- 1
@@ -177,11 +170,11 @@ Inicio
          fimse
       fimenquanto
       limpatela
-      
+
       //Banco de dados palavras
-      
+
       se temadojogo = 1 entao
-      
+
             palavras[1] <- "senna"
             palavras[2] <- "pneus"
             palavras[3] <- "capacete"
@@ -193,96 +186,106 @@ Inicio
             temas[3] <- "Equipamento de segurança que sem ele, muitas pessoas poderiam ter morrido."
             temas[4] <- "Todo piloto de corrida, quando esta pilotando gosta de ?..."
             temas[5] <- "Para correr com um formula 1, precisa estar em um ?...."
-            
+
       fimse
-      se temadojogo = 2 entao
+         se temadojogo = 2 entao
 
-            palavras[1] <- "servidor"
-            palavras[2] <- "fone"
-            palavras[3] <- "bateria"
-            palavras[4] <- "energia"
-            palavras[5] <- "rgb"
+               palavras[1] <- "servidor"
+               palavras[2] <- "fone"
+               palavras[3] <- "bateria"
+               palavras[4] <- "energia"
+               palavras[5] <- "rgb"
 
-            temas[1] <- "Muitas empresas tem, e fica escondido"
-            temas[2] <- "Todo jogador de e-sports tem um ?..."
-            temas[3] <- "Para conseguir ligar um notebook, precisa de ?..."
-            temas[4] <- "Para conseguir ligar um desktop, precisa de ?..."
-            temas[5] <- "Hoje em dia, é visto como sinônimo de desempenho nos pc's."
+               temas[1] <- "Muitas empresas tem, e fica escondido"
+               temas[2] <- "Todo jogador de e-sports tem um ?..."
+               temas[3] <- "Para conseguir ligar um notebook, precisa de ?..."
+               temas[4] <- "Para conseguir ligar um desktop, precisa de ?..."
+               temas[5] <- "Hoje em dia, é visto como sinônimo de desempenho nos pc's."
+
+         fimse
+            se temadojogo = 3 entao
+
+                  palavras[1] <- "pizza"
+                  palavras[2] <- "maionese"
+                  palavras[3] <- "espinafre"
+                  palavras[4] <- "queijo"
+                  palavras[5] <- "laranja"
+
+                  temas[1] <- "Existe um gráfico que tem o mesmo nome de uma comida"
+                  temas[2] <- "Todo lanche fica melhor com uma..."
+                  temas[3] <- "O popeye come para ganhar força"
+                  temas[4] <- "Famoso em minas"
+                  temas[5] <- "O mesmo nome pode ser uma cor e uma fruta"
+
+            fimse
+                 se temadojogo = 4 entao
+                 
+                     palavras[1] <- "brasil"
+                     palavras[2] <- "talento"
+                     palavras[3] <- "treinador"
+                     palavras[4] <- "arbitro"
+                     palavras[5] <- "chuteira"
+
+                     temas[1] <- "Time que foi campeão do mundo cinco vezes."
+                     temas[2] <- "Todo jogador no auge tem..."
+                     temas[3] <- "Todo time tem um..."
+                     temas[4] <- "Todo jogador odeia o..."
+                     temas[5] <- "Todo jogador usa..."
+
+                fimse
+
+      
+           //gerar numero aleatorico para dica e palavra, conforme tema escolhido
+           
+            nmraleat <- randi(5)
             
-      fimse
-      se temadojogo = 3 entao
-
-            palavras[1] <- "pizza"
-            palavras[2] <- "comida"
-            palavras[3] <- "espinafre"
-            palavras[4] <- "queijo"
-            palavras[5] <- "laranja"
-
-            temas[1] <- "Existe um gráfico que tem o mesmo nome de uma comida famosa"
-            temas[2] <- "tema comida"
-            temas[3] <- "O popeye come para ganhar força"
-            temas[4] <- "Famoso em minas"
-            temas[5] <- "O mesmo nome pode ser uma cor e uma fruta"
+            // verificador para nao ser igual a zero
             
-      fimse
-      se temadojogo = 4 entao
-
-            palavras[1] <- "futebol"
-            palavras[2] <- "futebol"
-            palavras[3] <- "futebol"
-            palavras[4] <- "futebol"
-            palavras[5] <- "futebol"
-
-            temas[1] <- "tema futebol"
-            temas[2] <- "tema futebol"
-            temas[3] <- "tema futebol"
-            temas[4] <- "tema futebol"
-            temas[5] <- "tema futebol"
-            
-      fimse
-            nmraleat <- randi(11)
-
             se nmraleat = 0 entao
                enquanto nmraleat = 0 faca
-                        nmraleat <- randi(11)
+                        nmraleat <- randi(5)
                fimEnquanto
             fimse
 
+            //colocar a palavra em uma variavel
+            
             palavra2 <- palavras[nmraleat]
 
 
             //Tamanho da Palavra
+            
             tampalavra2 <- compr(palavra2)
 
+            //Para cada letra ira imprimir um espaço, conforme tamanho da palavra
+            
             enquanto cont5 <= tampalavra2 faca
                      letrasesc2[cont5] <- "__ "
                      cont5 <- cont5 + 1
             fimEnquanto
 
-
-            //Divisor de Letras
+            //Divisor de letras
+            
             enquanto cont6 <= tampalavra2 faca
                      letras2[cont6] <- copia(palavra2;cont6;1)
                      cont6 <- cont6 + 1
             fimenquanto
 
-
+            //Gerando a forca
             enquanto erros2 <= 6 faca
                      acerto2 <- 0
                      lettercont <- 1
                      acesso <- 0
                      bloqueio <- 0
                      tamletratent2 <- 0
-
+                     //Imprimir cada letra digitada, sem repetir a mesma
+                     escreva("LETRAS JA DIGITADAS: ")
                      enquanto lettercont <= posicao faca
                               escreva(letters[lettercont], " ")
                               lettercont <- lettercont + 1
                      fimEnquanto
-
                      escreval("")
-
                      escreval("===========================================")
-                     escreval(temas[nmraleat])
+                     escreval("DICA: ", temas[nmraleat])
                      escreval("================ Numero de erros >>> ", erros2)
                      se erros2 = 0 entao
                         escreval("====================")
@@ -399,14 +402,15 @@ Inicio
                                              escreval("=====")
                                          fimse
 
-                     //Espaços em Branco e da Palavra
+                     //Colocar os espaços entre o tamanho da palavra
                      enquanto cont7 <= tampalavra2 faca
                               escreva(letrasesc2[cont7], "  ")
                               cont7 <- cont7 + 1
                      fimEnquanto
                      escreval("")
+                     //Entrada de Letra
                      escreva(">>>>>")
-                     leia(letratent2)//Entrada de Letra
+                     leia(letratent2)
 
                      tamletratent2 <- compr(letratent2)
 
@@ -421,7 +425,7 @@ Inicio
                               fimSe
                               lettercont <- lettercont + 1
                      fimEnquanto
-
+                     // se tiver certo ira colocar na sua posição
                      se (acesso = 1) e (bloqueio <> 1) entao
                         posicao <- posicao + 1
                         letters[posicao] <- letratent2
@@ -475,7 +479,7 @@ Inicio
                         escreval("")
                         escreval("")
                         escreval("")
-                        
+
                         timer 500
                         escreval("                                                                                 ")
                         limpatela
@@ -519,14 +523,14 @@ Inicio
                            escreval("              ....###....########.##....##..######..########..#######.")
                            escreval("              ________________________________________________________")
                         cont7 <- 1
-                              escreva(" A palavra era => ")
+                              escreva("                 A palavra era => ")
                         enquanto cont7 <= tampalavra2 faca
                            escreva(letrasesc2[cont7], "  ")
                            cont7 <- cont7+1
                         fimEnquanto
 
                         escreval (" ")
-                        escreval ("Numero de erros >>> ", erros2)
+                        escreval ("                Numero de erros >>> ", erros2)
                         timer 0 off
                         fimAlgoritmo
                      fimse
@@ -547,23 +551,23 @@ Inicio
                			escreval("                ##     ##  #######  ##     ## ##     ## ########  ####### ")
                         escreval("                __________________________________________________________")
                         se erros2 = 6 entao
-                              escreval("====================")
-                              escreval("  ||               #")
-                              escreval("  ||               #")
-                              escreval("  ||              _#_")
-                              escreval("  ||             (X_X) ")
-                              escreval("  ||               |   ")
-                              escreval("  ||              /|\  ")
-                              escreval("  ||             / | \ ")
-                              escreval("  ||              / \  ")
-                              escreval("  ||             /   \")
-                              escreval("  || ")
-                              escreval("  || ")
-                              escreval("  ||     TENTE NOVAMENTE !")
-                              escreval("=====")
+                              escreval("                ====================")
+                              escreval("                  ||               #")
+                              escreval("                  ||               #")
+                              escreval("                  ||              _#_")
+                              escreval("                  ||             (X_X) ")
+                              escreval("                  ||               |   ")
+                              escreval("                  ||              /|\  ")
+                              escreval("                  ||             / | \ ")
+                              escreval("                  ||              / \  ")
+                              escreval("                  ||             /   \")
+                              escreval("                  || ")
+                              escreval("                  || ")
+                              escreval("                  ||     TENTE NOVAMENTE !")
+                              escreval("                =====")
                         fimse
-                             escreval("|    ")
-                             escreval ("Sua quantidade de Erros é ", erros2 )
+                             escreval("                |    ")
+                             escreval ("                Sua quantidade de Erros é ", erros2 )
                              fimAlgoritmo
                      fimSe
                      cont7 <- 1
