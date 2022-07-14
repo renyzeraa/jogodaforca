@@ -4,8 +4,9 @@ algoritmo "forca"
 // Autor : Renan Leandro da Silva
 // Data : 12/07/2022
 
-// Seção de Declarações 
+
 Var
+
 // Seção de Declarações das variáveis
 //Modo de Jogo 2
    palavra, letratent: caractere
@@ -16,6 +17,10 @@ Var
    tamletratent2, nmraleat, cont5, cont6, cont7, cont8, tampalavra2, erros2, tentativas2, acerto2, acertos2: inteiro
    palavra2, letratent2: caracter
    temas: vetor[1..11] de caracter
+   escolhadotema, menudojogo: logico
+
+   // tema
+   temadojogo,k,i: inteiro
 
    //Dos dois
    letters: vetor[1..23] de caracter
@@ -30,7 +35,6 @@ Inicio
 // Seção de Comandos, procedimento, funções, operadores, etc...
 
    esclhv <- 0
-   selecj <- 0
    tampalavra <- 0
    modojogo <- 0
 
@@ -54,11 +58,12 @@ Inicio
    acerto2 <- 0
    acertos2 <- 0
 
-   timer(400)
+
 
    //BANNER JOGO
-limpatela
-      escreval("              ___________________________________________________ ")
+    timer(100)
+    limpatela
+      escreval("              ____________________________________________________ ")
       escreval("                           ########  ######## ##     ##             ")
       escreval("                           ##     ## ##       ###   ###             ")
       escreval("                           ##     ## ##       #### ####             ")
@@ -67,8 +72,7 @@ limpatela
       escreval("                           ##     ## ##       ##     ##             ")
       escreval("                           ########  ######## ##     ##             ")
       escreval("               ___________________________________________________ ")
-
-      escreval("               ___________________________________________________ ")
+      escreval("               ____________________________________________________ ")
       escreval("                    ##     ## #### ##    ## ########   #######      ")
       escreval("                    ##     ##  ##  ###   ## ##     ## ##     ##     ")
       escreval("                    ##     ##  ##  ####  ## ##     ## ##     ##     ")
@@ -77,7 +81,6 @@ limpatela
       escreval("                      ## ##    ##  ##   ### ##     ## ##     ##     ")
       escreval("                       ###    #### ##    ## ########   #######      ")
       escreval("                ___________________________________________________ ")
-
       escreval("                ___________________________________________________ ")
       escreval("                                      ###                           ")
       escreval("                                     ## ##                          ")
@@ -87,8 +90,7 @@ limpatela
       escreval("                                   ##     ##                        ")
       escreval("                                   ##     ##                        ")
       escreval("                ___________________________________________________ ")
-
-      escreval("                ___________________________________________________ ")
+      escreval("                ____________________________________________________")
       escreval("                    ########  #######  ########   ######     ###    ")
       escreval("                    ##       ##     ## ##     ## ##    ##   ## ##   ")
       escreval("                    ##       ##     ## ##     ## ##        ##   ##  ")
@@ -96,59 +98,148 @@ limpatela
       escreval("                    ##       ##     ## ##   ##   ##       ######### ")
       escreval("                    ##       ##     ## ##    ##  ##    ## ##     ## ")
       escreval("                    ##        #######  ##     ##  ######  ##     ## ")
-      escreval("                ___________________________________________________ ")
+      escreval("                ____________________________________________________")
       timer(0)
-      limpatela
+   limpatela
    escreval("")
-   enquanto (selecj > 3) ou (selecj < 1)  faca
-      escreval("              -----------------------------------------------------")
-      escreval("              -------------------- Como Jogar ? -------------------")
-      escreval("                                                     ")
-      escreval("                     O jogo ira pegar uma palavra aleatórica.      ")
-      escreval("                   Você tera uma dica, para te ajudar a acertar.   ")
-      escreval("                 Tem apenas 5 chances de acerto, então não vacila !")
-      escreval("                                                     ")
-      escreval("              ---------------------1>  JOGAR  ---------------------")
-      escreval("              ---------------------3>  SAIR   ---------------------")
-      escreval("              -----------------------------------------------------")
-      escreva(">>>>>>>>")
-      leia (selecj)
+   menudojogo <- falso
+   i<- 0
+   enquanto nao(menudojogo) faca
+      se (i = 0) entao
+         i <- 1
+         escreval("              -----------------------------------------------------")
+         escreval("              -------------------- Como Jogar ? -------------------")
+         escreval("                                                                   ")
+         escreval("                 Você ira escolher um tema para a palavra da forca.")
+         escreval("                                                                   ")
+         escreval("                 Tera apenas 6 chances de acerto, então não vacila!")
+         escreval("                                                                   ")
+         escreval("              --------------------1>  JOGAR  ----------------------")
+         escreval("              -----------------2>  SAIR DO JOGO  ------------------")
+         escreval("              -----------------------------------------------------")
+         escreva(">>>>>>>>")
+         leia (selecj)
+      fimse
+      se (selecj = 1) ou (selecj = 2)entao
+         menudojogo <- verdadeiro
+      senao
+         limpatela
+         escreval("              ------------------- MODO INVALIDO ! -----------------")
+         escreval("              -----------------------------------------------------")
+         escreval("              --------------------1>  JOGAR  ----------------------")
+         escreval("              -----------------2>  SAIR DO JOGO  ------------------")
+         escreval("              -----------------------------------------------------")
+         escreva(">>>>>>>>")
+         leia (selecj)
+      fimse
    fimEnquanto
-      se selecj = 3 entao
+   
+   // fechar o jogo
+      se selecj = 2 entao
          fimalgoritmo
       fimSe
+      
    //1 - Jogar
    se selecj = 1 entao
       modojogo <- 1
       limpatela
+
+      escolhadotema <- falso
+      k<-0
+      enquanto nao(escolhadotema) faca
+         se k = 0 entao
+            escreval("              -----------------------------------------------------")
+            escreval("              ------------------- Escolha um tema -----------------")
+            escreval("                                                                   ")
+            escreval("                 1- Corrida, 2- Computador, 3- Comidas 4- Futebol  ")
+            escreval("                                                                   ")
+            escreval("                   Você tera uma dica, para te ajudar a acertar.   ")
+            escreval("                                                                   ")
+            escreval("              -----------------------------------------------------")
+            escreva(">>>>>>>>")
+            leia(temadojogo)
+            k<-1
+         fimse
+         se (temadojogo = 1) ou (temadojogo = 2)ou (temadojogo = 3) ou (temadojogo = 4) entao
+            timer(200)
+            escreval("              -----------------------------------------------------")
+            escreval("              --------------------- Bom jogo ! --------------------")
+            escreval("              -----------------------------------------------------")
+            escolhadotema <- verdadeiro
+            timer(0)
+         senao
+            limpatela
+            escreval("              ------------------ MODO INVALIDO ! -----------------")
+            escreval("                 1- Corrida, 2- Computador, 3- Comidas 4- Futebol ")
+            escreval("              ----------------------------------------------------")
+            escreval("              >>>>>>>>")
+            leia(temadojogo)
+         fimse
+      fimenquanto
+      limpatela
+      
       //Banco de dados palavras
       
-      se modojogo = 1 entao
+      se temadojogo = 1 entao
+      
+            palavras[1] <- "senna"
+            palavras[2] <- "pneus"
+            palavras[3] <- "capacete"
+            palavras[4] <- "velocidade"
+            palavras[5] <- "circuito"
 
-            palavras[1] <- "peixes"
-            palavras[2] <- "havaianas"
-            palavras[3] <- "fenomeno"
-            palavras[4] <- "fascinante"
-            palavras[5] <- "gabinete"
-            palavras[6] <- "hamburguer"
-            palavras[7] <- "ideologia"
-            palavras[8] <- "quadrilha"
-            palavras[9] <- "vademecum"
-            palavras[10] <- "javascript"
-            palavras[11] <- "abacaxi"
+            temas[1] <- "Considerado o BOSS, no automobilismo, hoje não esta mais vivo."
+            temas[2] <- "Para o carro andar ele precisa de ?..."
+            temas[3] <- "Equipamento de segurança que sem ele, muitas pessoas poderiam ter morrido."
+            temas[4] <- "Todo piloto de corrida, quando esta pilotando gosta de ?..."
+            temas[5] <- "Para correr com um formula 1, precisa estar em um ?...."
+            
+      fimse
+      se temadojogo = 2 entao
 
-            temas[1] <- "É que mais aparece no filme procurando nemo"
-            temas[2] <- "Serve para bater, é muito usada no verão e so tem no brasil"
-            temas[3] <- "Muitos jogadores de futebol são"
-            temas[4] <- ""
-            temas[5] <- "Peça Computador"
-            temas[6] <- "Comida"
-            temas[7] <- "Tipo de Ciência"
-            temas[8] <- "Tipo de Bando"
-            temas[9] <- "Livro"
-            temas[10] <- "Programação"
-            temas[11] <- "Fruta"
+            palavras[1] <- "servidor"
+            palavras[2] <- "fone"
+            palavras[3] <- "bateria"
+            palavras[4] <- "energia"
+            palavras[5] <- "rgb"
 
+            temas[1] <- "Muitas empresas tem, e fica escondido"
+            temas[2] <- "Todo jogador de e-sports tem um ?..."
+            temas[3] <- "Para conseguir ligar um notebook, precisa de ?..."
+            temas[4] <- "Para conseguir ligar um desktop, precisa de ?..."
+            temas[5] <- "Hoje em dia, é visto como sinônimo de desempenho nos pc's."
+            
+      fimse
+      se temadojogo = 3 entao
+
+            palavras[1] <- "pizza"
+            palavras[2] <- "comida"
+            palavras[3] <- "espinafre"
+            palavras[4] <- "queijo"
+            palavras[5] <- "laranja"
+
+            temas[1] <- "Existe um gráfico que tem o mesmo nome de uma comida famosa"
+            temas[2] <- "tema comida"
+            temas[3] <- "O popeye come para ganhar força"
+            temas[4] <- "Famoso em minas"
+            temas[5] <- "O mesmo nome pode ser uma cor e uma fruta"
+            
+      fimse
+      se temadojogo = 4 entao
+
+            palavras[1] <- "futebol"
+            palavras[2] <- "futebol"
+            palavras[3] <- "futebol"
+            palavras[4] <- "futebol"
+            palavras[5] <- "futebol"
+
+            temas[1] <- "tema futebol"
+            temas[2] <- "tema futebol"
+            temas[3] <- "tema futebol"
+            temas[4] <- "tema futebol"
+            temas[5] <- "tema futebol"
+            
+      fimse
             nmraleat <- randi(11)
 
             se nmraleat = 0 entao
@@ -176,7 +267,7 @@ limpatela
             fimenquanto
 
 
-            enquanto erros2 <= 5 faca
+            enquanto erros2 <= 6 faca
                      acerto2 <- 0
                      lettercont <- 1
                      acesso <- 0
@@ -190,7 +281,9 @@ limpatela
 
                      escreval("")
 
-                     escreval("====================","            ", temas[nmraleat])
+                     escreval("===========================================")
+                     escreval(temas[nmraleat])
+                     escreval("================ Numero de erros >>> ", erros2)
                      se erros2 = 0 entao
                         escreval("====================")
                         escreval("  ||               #")
@@ -213,8 +306,7 @@ limpatela
                            escreval("  ||               #")
                            escreval("  ||               #")
                            escreval("  ||              _#_")
-                           escreval("  ||             /   \")
-                           escreval("  ||             \___/ ")
+                           escreval("  ||             (X_X) ")
                            escreval("  || ")
                            escreval("  || ")
                            escreval("  || ")
@@ -230,11 +322,10 @@ limpatela
                               escreval("  ||               #")
                               escreval("  ||               #")
                               escreval("  ||              _#_")
-                              escreval("  ||             /   \")
-                              escreval("  ||             \___/ ")
-                              escreval("  ||              / ")
-                              escreval("  ||             /  ")
-                              escreval("  ||            /    ")
+                              escreval("  ||             (X_X) ")
+                              escreval("  ||               |   ")
+                              escreval("  ||               |  ")
+                              escreval("  ||               |  ")
                               escreval("  ||                ")
                               escreval("  ||                ")
                               escreval("  || ")
@@ -248,13 +339,12 @@ limpatela
                                  escreval("  ||               #")
                                  escreval("  ||               #")
                                  escreval("  ||              _#_")
-                                 escreval("  ||             /   \")
-                                 escreval("  ||             \___/ ")
-                                 escreval("  ||              /| ")
+                                 escreval("  ||             (X_X) ")
+                                 escreval("  ||               |   ")
+                                 escreval("  ||              /|  ")
                                  escreval("  ||             / |  ")
-                                 escreval("  ||            /  |")
-                                 escreval("  ||               |")
-                                 escreval("  ||               ")
+                                 escreval("  ||                ")
+                                 escreval("  ||                ")
                                  escreval("  || ")
                                  escreval("  || ")
                                  escreval("  || ")
@@ -265,13 +355,12 @@ limpatela
                                     escreval("  ||               #")
                                     escreval("  ||               #")
                                     escreval("  ||              _#_")
-                                    escreval("  ||             /   \")
-                                    escreval("  ||             \___/ ")
-                                    escreval("  ||              /|\")
+                                    escreval("  ||             (X_X)")
+                                    escreval("  ||               |  ")
+                                    escreval("  ||              /|\ ")
                                     escreval("  ||             / | \")
-                                    escreval("  ||            /  |  \")
-                                    escreval("  ||               |")
-                                    escreval("  ||                ")
+                                    escreval("  ||                 ")
+                                    escreval("  ||                 ")
                                     escreval("  || ")
                                     escreval("  || ")
                                     escreval("  || ")
@@ -282,26 +371,33 @@ limpatela
                                        escreval("  ||               #")
                                        escreval("  ||               #")
                                        escreval("  ||              _#_")
-                                       escreval("  ||             /   \")
-                                       escreval("  ||             \___/ ")
-                                       escreval("  ||              /|\")
-                                       escreval("  ||             / | \")
-                                       escreval("  ||            /  |  \")
+                                       escreval("  ||             (X_X) ")
                                        escreval("  ||               |   ")
-                                       escreval("  ||               |    ")
-                                       escreval("  ||              /     ")
-                                       escreval("  ||             /      ")
+                                       escreval("  ||              /|\  ")
+                                       escreval("  ||             / | \ ")
+                                       escreval("  ||              /  ")
+                                       escreval("  ||             /   ")
                                        escreval("  || ")
                                        escreval("  || ")
                                        escreval("  || ")
                                        escreval("=====")
-                                 fimse
-
-
-
-
-
-
+                                    fimse
+                                         se erros2 = 6 entao
+                                             escreval("====================")
+                                             escreval("  ||               #")
+                                             escreval("  ||               #")
+                                             escreval("  ||              _#_")
+                                             escreval("  ||             (X_X) ")
+                                             escreval("  ||               |   ")
+                                             escreval("  ||              /|\  ")
+                                             escreval("  ||             / | \ ")
+                                             escreval("  ||              / \ ")
+                                             escreval("  ||             /   \")
+                                             escreval("  || ")
+                                             escreval("  || ")
+                                             escreval("  || ")
+                                             escreval("=====")
+                                         fimse
 
                      //Espaços em Branco e da Palavra
                      enquanto cont7 <= tampalavra2 faca
@@ -320,8 +416,8 @@ limpatela
                      enquanto lettercont <= 23 faca
                               se letratent2 = letters[lettercont] entao
                                  bloqueio <- 1
-                                 senao
-                                      acesso <- 1
+                              senao
+                                 acesso <- 1
                               fimSe
                               lettercont <- lettercont + 1
                      fimEnquanto
@@ -379,30 +475,12 @@ limpatela
                         escreval("")
                         escreval("")
                         escreval("")
+                        
                         timer 500
                         escreval("                                                                                 ")
                         limpatela
                         timer 0
-                        escreval("")
-                        escreval("")
-                        escreval("")
-                        escreval("")
-                        escreval("    _|_                 _|_                   _|_            /                    _|_    ")
-                        escreval("     |            _|_    |          _|_        |           / /             _|_     |  ")
-                        escreval("         _|________|_________________|_____________________/______|____     | ")
-                        escreval("    /   | BBB              OOOOO           OOOOO        M         M   |")
-                        escreval("  / /   |BBBBBBB         OOOOOOOOO       OOOOOOOOO     MMM       MMM  |      ")
-                        escreval("  /     |BB   BBBB      OOO     OOO     OOO     OOO   MMM M     M MMM |    ")
-                        escreval("________|BB   BB       OOO       OOO   OOO       OOO  MMM  M   M  MMM |_________________   ")
-                        escreval("        |BBBBBBBB     OOO         OOO OOO         OOO MMM   M M   MMM |            /    ")
-                        escreval("        |BB    BBBB    OOO       OOO   OOO       OOO  MMM    M    MMM |  _|_     / /")
-                        escreval("     /  |BB      BBB    OOO     OOO     OOO     OOO   MMM         MMM |   |      /       _|_  ")
-                        escreval("   / /  |BBBBBBBBBB      OOOOOOOOO       OOOOOOOOO    MMM         MMM |                   | ")
-                        escreval("   /    |_BBBBBB__________ OOOOO___________OOOOO______MMM_________MMM_|       _|_      ")
-                        escreval("    _|_                     _|_        _|_                     _|_             |                   ")
-                        ESCREval("     |           _|_         |          |          _|_          |               _|_           ")
                         escreval("                  |                                 |                            |          ")
-
                         timer 350
                         escreval("                                                                                 ")
                         limpatela
@@ -425,14 +503,12 @@ limpatela
                         escreval("   /  /    _|_              _|_             _|_                    \                    |   ")
                         escreval("   /        |                |    _|_        |               _|_           ")
                         escreval("                                   |                          |              ")
-                           timer(200)
-
-
-
-
-
-
-
+                           timer 700 on
+                           escreval ("")
+                           timer 250
+                           escreval ("")
+                           limpatela
+                           escreval("")
                            escreval("              ________________________________________________________")
                            escreval("              .##.....##.########.##....##..######..########.##.....##")
                            escreval("              .##.....##.##.......###...##.##....##.##.......##.....##")
@@ -442,9 +518,8 @@ limpatela
                            escreval("              ...##.##...##.......##...###.##....##.##.......##.....##")
                            escreval("              ....###....########.##....##..######..########..#######.")
                            escreval("              ________________________________________________________")
-
                         cont7 <- 1
-                              escreva(" A palavra era")
+                              escreva(" A palavra era => ")
                         enquanto cont7 <= tampalavra2 faca
                            escreva(letrasesc2[cont7], "  ")
                            cont7 <- cont7+1
@@ -452,11 +527,12 @@ limpatela
 
                         escreval (" ")
                         escreval ("Numero de erros >>> ", erros2)
+                        timer 0 off
                         fimAlgoritmo
                      fimse
 
                      //Fim de Jogo DERROTA
-                     se erros2 = 5 entao
+                     se erros2 = 6 entao
                         limpatela
                         timer(200)
                           timer(200)
@@ -470,127 +546,29 @@ limpatela
                			escreval("                ##     ## ##     ## ##    ##  ##    ##  ##       ##     ##")
                			escreval("                ##     ##  #######  ##     ## ##     ## ########  ####### ")
                         escreval("                __________________________________________________________")
-                        se erros2 = 0 entao
-                        escreval("====================")
-                        escreval("  ||               #")
-                        escreval("  ||               #")
-                        escreval("  ||               #")
-                        escreval("  || ")
-                        escreval("  || ")
-                        escreval("  || ")
-                        escreval("  || ")
-                        escreval("  || ")
-                        escreval("  || ")
-                        escreval("  || ")
-                        escreval("  || ")
-                        escreval("  || ")
-                        escreval("  || ")
-                        escreval("=====")
-                      fimse
-                        se erros2 = 1 entao
-                           escreval("====================")
-                           escreval("  ||               #")
-                           escreval("  ||               #")
-                           escreval("  ||              _#_")
-                           escreval("  ||             /   \")
-                           escreval("  ||             \___/ ")
-                           escreval("  || ")
-                           escreval("  || ")
-                           escreval("  || ")
-                           escreval("  || ")
-                           escreval("  || ")
-                           escreval("  || ")
-                           escreval("  || ")
-                           escreval("  || ")
-                           escreval("=====")
-                        fimse
-                           se erros2 = 2 entao
+                        se erros2 = 6 entao
                               escreval("====================")
                               escreval("  ||               #")
                               escreval("  ||               #")
                               escreval("  ||              _#_")
+                              escreval("  ||             (X_X) ")
+                              escreval("  ||               |   ")
+                              escreval("  ||              /|\  ")
+                              escreval("  ||             / | \ ")
+                              escreval("  ||              / \  ")
                               escreval("  ||             /   \")
-                              escreval("  ||             \___/ ")
-                              escreval("  ||              / ")
-                              escreval("  ||             /  ")
-                              escreval("  ||            /    ")
-                              escreval("  ||                ")
-                              escreval("  ||                ")
                               escreval("  || ")
                               escreval("  || ")
-                              escreval("  || ")
+                              escreval("  ||     TENTE NOVAMENTE !")
                               escreval("=====")
-
-                           fimse
-                              se erros2 = 3 entao
-                                 escreval("====================")
-                                 escreval("  ||               #")
-                                 escreval("  ||               #")
-                                 escreval("  ||              _#_")
-                                 escreval("  ||             /   \")
-                                 escreval("  ||             \___/ ")
-                                 escreval("  ||              /| ")
-                                 escreval("  ||             / |  ")
-                                 escreval("  ||            /  |")
-                                 escreval("  ||               |")
-                                 escreval("  ||               ")
-                                 escreval("  || ")
-                                 escreval("  || ")
-                                 escreval("  || ")
-                                 escreval("=====")
-                              fimse
-                                 se erros2 = 4 entao
-                                    escreval("====================")
-                                    escreval("  ||               #")
-                                    escreval("  ||               #")
-                                    escreval("  ||              _#_")
-                                    escreval("  ||             /   \")
-                                    escreval("  ||             \___/ ")
-                                    escreval("  ||              /|\")
-                                    escreval("  ||             / | \")
-                                    escreval("  ||            /  |  \")
-                                    escreval("  ||               |")
-                                    escreval("  ||                ")
-                                    escreval("  || ")
-                                    escreval("  || ")
-                                    escreval("  || ")
-                                    escreval("=====")
-                                 fimse
-                                    se erros2 = 5 entao
-                                       escreval("====================")
-                                       escreval("  ||               #")
-                                       escreval("  ||               #")
-                                       escreval("  ||              _#_")
-                                       escreval("  ||             /   \")
-                                       escreval("  ||             \___/ ")
-                                       escreval("  ||              /|\")
-                                       escreval("  ||             / | \")
-                                       escreval("  ||            /  |  \")
-                                       escreval("  ||               |   ")
-                                       escreval("  ||               |    ")
-                                       escreval("  ||              / \")
-                                       escreval("  ||             /   \")
-                                       escreval("  || ")
-                                       escreval("  || ")
-                                       escreval("  || ")
-                                       escreval("=====")
-                                 fimse
-                        escreval("|    ")
-                        escreval("|    ")
-                        escreval("|    ")
-
-                        escreval ("Sua quantidade de Erros é ", erros2 )
-
-
-                        fimAlgoritmo
-
+                        fimse
+                             escreval("|    ")
+                             escreval ("Sua quantidade de Erros é ", erros2 )
+                             fimAlgoritmo
                      fimSe
-
                      cont7 <- 1
                      cont8 <- 1
-
                      limpatela
-
             fimEnquanto
       fimSe
 fimse
