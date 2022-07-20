@@ -104,9 +104,9 @@ Inicio
                escreval("              -----------------------------------------------------")
                escreval("              -------------------- Como Jogar ? -------------------")
                escreval("                 Voce ira escolher um tema para a palavra da forca.")
-               escreval("                            Tera uma frase com a dica.              ")
+               escreval("                                          ")
                escreval("                    Cuidado para nao repetir a mesma letra, ira mostar")
-               escreval("                 quantos erros voce tem e quais palavras voce digitou")
+               escreval("                 quantos erros voce tem e quais palavras voce digitou")Tera uma frase com a dica.
                escreval("                 Tera apenas 6 chances de acerto, entao nao vacila!")
                escreval("              --------------------1>  JOGAR  ----------------------")
                escreval("              -----------------2>  SAIR DO JOGO  ------------------")
