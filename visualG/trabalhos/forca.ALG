@@ -10,50 +10,32 @@ Var
 
 // Sessao de Declaracoes das variavieis
 
-   palavra, letratent: caractere
-   letras, letrasesc: vetor[1..20] de caractere
-   tamletratent, selecj, esclhv, modojogo, cont1, cont2, cont3, cont4, tampalavra, erros, tentativas, acerto, acertos: inteiro
-
-   letras2, letrasesc2: vetor[1..20] de caracter
-   tamletratent2, nmraleat, cont5, cont6, cont7, cont8, tampalavra2, erros2, tentativas2, acerto2, acertos2: inteiro
-   palavra2, letratent2: caracter
-   temas: vetor[1..5] de caracter
-   palavras: vetor[1..5] de caracter
-   escolhadotema, menudojogo: logico
-
-   // tema
-   temadojogo,k,i: inteiro
-
-   //Dos dois
-   letters: vetor[1..23] de caracter
-   lettercont: inteiro
-   acesso: inteiro
-   bloqueio: inteiro
-   letrastentadas: inteiro
-   posicao: inteiro
+   selecj: inteiro // selecao menu
+   temadojogo: inteiro // selecionar tema do jogo
+   k,i: inteiro // variaveis de controle
+   escolhadotema, menudojogo: logico // verificadores logicos do menu usando enquanto 	
+   temas: vetor[1..5] de caracter // vetor dos temas
+   palavras: vetor[1..5] de caracter // vetor das palavras
+   letras2, letrasesc2: vetor[1..20] de caracter // vetores para espaços e underline das letras 
+   tamletratent2: inteiro // usado para colocar a letra da tentativa no lugar certo
+   nmraleat: inteiro // numero que sera usado nos vetores para pegar a dica e a palavra
+   cont5, cont6, cont7, cont8: inteiro // contadores
+   tampalavra2: inteiro // lenght (quantidade de caracteres)
+   erros2,  acerto2, acertos2: inteiro // contadores de erros e acertos
+   palavra2, letratent2: caracter // palavra da forca e letras da tentativa
+   letters: vetor[1..23] de caracter // vetor para imprimir letras usadas no jogo (letters é letras em ingles)
+   lettercont: inteiro // contador do vetor de letras
+   acesso, bloqueio: inteiro // verificadores dos se's quando digitado a letra
+   posicao: inteiro // contador da posicao vetor usado para colocar a letra no lugar
 
 Inicio
 
-   esclhv <- 0
-   tampalavra <- 0
-   modojogo <- 0
-   cont1 <- 1
-   erros <- 0
-   cont2 <- 1
-   cont3 <- 1
-   cont4 <- 1
-   acerto <- 0
-   nmraleat <- 0
+   nmraleat <- erros2 <- acerto2 <- acertos2 <- 0
    cont5 <- 1
    cont6 <- 1
    cont7 <- 1
    cont8 <- 1
-   erros2 <- 0
-   acerto2 <- 0
-   acertos2 <- 0
-
-
-
+   
    //BANNER JOGO
     timer(100)
     limpatela
@@ -101,20 +83,20 @@ Inicio
          enquanto nao(menudojogo) faca
             se (i = 0) entao
                i <- 1
-               escreval("              -----------------------------------------------------")
-               escreval("              -------------------- Como Jogar ? -------------------")
-               escreval("                 Voce ira escolher um tema para a palavra da forca.")
-               escreval("                                          ")
-               escreval("                    Cuidado para nao repetir a mesma letra, ira mostar")
-               escreval("                 quantos erros voce tem e quais palavras voce digitou")Tera uma frase com a dica.
-               escreval("                 Tera apenas 6 chances de acerto, entao nao vacila!")
-               escreval("              --------------------1>  JOGAR  ----------------------")
-               escreval("              -----------------2>  SAIR DO JOGO  ------------------")
-               escreval("              -----------------------------------------------------")
+               escreval("--------------------------------------------------------------------------------------")
+               escreval("------------------------------------ Como Jogar ? ------------------------------------")
+               escreval("       Apertando 1, voce ira escolher um tema para a palavra da forca. Ira gerar uma ")
+               escreval("     palavra e uma dica para ela. No jogo, tome cuidado para nao repetir a mesma letra,")
+               escreval("    pois tera um local onde mostrara quais letras voce ja digitou. Tera uma frase com a")
+               escreval("              dica da palavra, tambem monstrando quantos erros voce tem.              ")
+               escreval("                 Tera apenas 6 chances de acertos, entao nao vacila!                   ")
+               escreval("------------------------------------ 1>  JOGAR  --------------------------------------")
+               escreval("---------------------------------- 2>  SAIR DO JOGO ----------------------------------")
+               escreval("--------------------------------------------------------------------------------------")
                escreva(">>>>>>>>")
                leia (selecj)
             fimse
-            se (selecj = 1) ou (selecj = 2)entao
+            se (selecj = 1) ou (selecj = 2)entao // verificador
                menudojogo <- verdadeiro
             senao
                limpatela
@@ -135,7 +117,6 @@ Inicio
 
          //1 - Jogar
          se selecj = 1 entao
-            modojogo <- 1
             limpatela
 
             escolhadotema <- falso
@@ -154,7 +135,7 @@ Inicio
                   leia(temadojogo)
                   k<-1
                fimse
-               se (temadojogo = 1) ou (temadojogo = 2)ou (temadojogo = 3) ou (temadojogo = 4) entao
+               se (temadojogo = 1) ou (temadojogo = 2)ou (temadojogo = 3) ou (temadojogo = 4) entao // verificador
                   timer(200)
                   escreval("              -----------------------------------------------------")
                   escreval("              --------------------- Bom jogo ! --------------------")
@@ -172,9 +153,9 @@ Inicio
             fimenquanto
             limpatela
 
-            //Banco de dados palavras
+            //Banco de dados das palavras
 
-            se temadojogo = 1 entao
+            se temadojogo = 1 entao // corrida
 
                   palavras[1] <- "senna"
                   palavras[2] <- "pneus"
@@ -189,7 +170,7 @@ Inicio
                   temas[5] <- "Para correr com um formula 1, precisa estar em um ?...."
 
             fimse
-               se temadojogo = 2 entao
+               se temadojogo = 2 entao  // computador
 
                      palavras[1] <- "servidor"
                      palavras[2] <- "fone"
@@ -204,7 +185,7 @@ Inicio
                      temas[5] <- "Hoje em dia e visto como sinonimo de desempenho nos pc's."
 
                fimse
-               se temadojogo = 3 entao
+               se temadojogo = 3 entao  // comida
 
                      palavras[1] <- "pizza"
                      palavras[2] <- "maionese"
@@ -219,7 +200,7 @@ Inicio
                      temas[5] <- "O mesmo nome pode ser uma cor e uma fruta"
 
                fimse
-                    se temadojogo = 4 entao
+                    se temadojogo = 4 entao // futebol
 
                         palavras[1] <- "brasil"
                         palavras[2] <- "talento"
@@ -236,7 +217,7 @@ Inicio
                    fimse
 
 
-              //gerar numero aleatorico para dica e palavra, conforme tema escolhido
+              // gerar numero aleatorico para dica e palavra, conforme tema escolhido
 
                nmraleat <- randi(5)
 
@@ -386,7 +367,7 @@ Inicio
                                           escreval("  || ")
                                           escreval("=====")
                                        fimse
-                                            se erros2 = 6 entao
+                                            se erros2 = 6 entao // forca final, derrota
                                                 escreval("====================")
                                                 escreval("  ||               #")
                                                 escreval("  ||               #")
@@ -404,19 +385,22 @@ Inicio
                                             fimse
 
                         //Colocar os espacos entre o tamanho da palavra
+
                         enquanto cont7 <= tampalavra2 faca
                                  escreva(letrasesc2[cont7], "  ")
                                  cont7 <- cont7 + 1
                         fimEnquanto
                         escreval("")
+
                         //Entrada de Letra
+
                         escreva(">>>>>")
                         leia(letratent2)
 
                         tamletratent2 <- compr(letratent2)
 
-
                         //Verificador de Letras para Imprimir
+
                         lettercont <- 1
                         enquanto lettercont <= 23 faca
                                  se letratent2 = letters[lettercont] entao
@@ -428,12 +412,14 @@ Inicio
                         fimEnquanto
 
                         // se tiver certo ira colocar na sua posicao
+
                         se (acesso = 1) e (bloqueio <> 1) entao
                            posicao <- posicao + 1
                            letters[posicao] <- letratent2
                         fimse
 
                         //Verificador de Letras
+
                         enquanto cont8 <= tampalavra2 faca
                                  se letratent2 = letras2[cont8] entao
                                     acerto2 <- acerto2 + 1
@@ -443,19 +429,21 @@ Inicio
                         fimenquanto
 
                         //Verificador se a Pessoa Acertou
+
                         se (acerto2 <> 0) e (bloqueio <> 1) entao
                            acertos2 <- acertos2 + acerto2
                         fimse
 
 
                         //Verificador se a Pessoa Errou
+
                         se (acerto2 = 0) e (tamletratent2 = 1) entao
                            erros2 <- erros2 + 1
                         fimse
 
-
                         //Fim de Jogo VITORIA
-                        se acertos2 = tampalavra2 entao
+
+                        se acertos2 = tampalavra2 entao  // animacao em ascii
                            limpatela
                            timer 150 on
                            timer 0 off                                                                            ")
@@ -526,8 +514,6 @@ Inicio
                                  escreval("")
                                  escreval("")
                                  escreva("                 A palavra era => ")
-                                 escreval("")
-                                 escreval("")
                            enquanto cont7 <= tampalavra2 faca
                               escreva(letrasesc2[cont7], "  ")
                               cont7 <- cont7+1
@@ -540,6 +526,7 @@ Inicio
                         fimse
 
                         //Fim de Jogo DERROTA
+
                         se erros2 = 6 entao
                            limpatela
                            timer(200)
@@ -572,7 +559,13 @@ Inicio
                                  escreval("                  ||     TENTE NOVAMENTE !")
                                  escreval("                =====")
                            fimse
-                                escreval (" ")
+                                 cont7 <- 1
+                                 escreval("")
+                                 escreval("")
+                                 escreval("                 A palavra era => ", palavras[nmraleat])
+                                 escreval("                 Tente novamente ")
+                                 escreval("")
+
                                 escreval ("                Sua quantidade de Erros: ", erros2 )
                                 fimAlgoritmo
                         fimSe
@@ -583,4 +576,3 @@ Inicio
          fimSe
    fimse
 Fimalgoritmo
-
